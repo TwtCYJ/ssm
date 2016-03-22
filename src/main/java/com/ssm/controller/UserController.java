@@ -28,19 +28,19 @@ import javax.annotation.Resource;
  * @date 2016/3/22
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 
     @Resource
     private UserService userSvc;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login(Model model) {
         model.addAttribute("username", new User());
         return "login";
     }
 
-    @RequestMapping(value="/login",method= RequestMethod.POST)
+    @RequestMapping(value="login",method= RequestMethod.POST)
     public String login(User user,Model model) throws Exception {
         user=userSvc.checkLogin(user.getUserName(), user.getPassword());
         if(user!=null){
